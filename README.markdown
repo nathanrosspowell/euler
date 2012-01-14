@@ -1,21 +1,17 @@
-PROJECT EULER
-===
+# PROJECT EULER
 
 I have been attempting the Project Euler challenges as a learning exercise - 
 primarily to enhance my problem solving skills
 and secondly to aid in the learning of new programming languages
 
-Languages
-_________
+## Languages
 * C plus plus
 
-Executing
-_________
-
+## Executing
 This repro is tested against these versions:
-*Ubuntu 10.10
-*Python 2.6.6
-*GCC 4.4.5
+* Ubuntu 10.10
+* Python 2.6.6
+* GCC 4.4.5
 
 Completed problems will be ran by the testing utility and double checked against the correct answer.
 
