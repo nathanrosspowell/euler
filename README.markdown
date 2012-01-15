@@ -6,6 +6,7 @@ and secondly to aid in the learning of new programming languages
 
 ## Languages
 * C plus plus
+* Haskell
 
 ## Executing
 This repro is tested against these versions:

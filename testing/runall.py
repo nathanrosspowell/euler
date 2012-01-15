@@ -76,6 +76,7 @@ class Execute:
     # Bash format.
     bashFormat = "bash %s.bash %s"
     answer = "%.4d.txt"
+    cleanUp = "bash %s/cleanup.bash %s"
 
     def __init__( self, folders, language, problemNumber, problemPath, answer ):
         self.folders = folders
@@ -90,16 +91,25 @@ class Execute:
         startTime = time()
         status, output = commands.getstatusoutput( self.cmd )
         endTime = time()
-        print "problem:", self.problemNumber, "",
+        print "Problem:", self.problemNumber, "",
         if status == 0 and output.strip() == self.answer:
             print "Complete:", endTime - startTime
         else:
             print "Error", status, output, self.answer, self.language
-
+        args = "%s %s" %  os.path.split( self.problemPath )
+        os.system( self.cleanUp % ( self.folders.path, args ) )
+        
 class ExecuteCpp( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s" % ( folder, self.problemPath )
+        bash = os.path.join( self.folders.path, self.language )
+        self.cmd = self.bashFormat % ( bash, args )
+
+class ExecuteHaskell( Execute ):
+    def createCmd( self ):
+        folder, fileName = os.path.split( self.problemPath )
+        args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )
         bash = os.path.join( self.folders.path, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
