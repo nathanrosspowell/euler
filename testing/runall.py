@@ -40,35 +40,50 @@ class Folders:
         return os.path.join( self.getPath( folder), subPath )
     
     def yieldPrograms( self, languageFilter = None, problemFilter = None ):
-        for language, ext in self.extensions.items():
-            if languageFilter and language not in languageFilter:
+        for file in os.listdir( self.answerPath ):
+            answerFile = os.path.join( self.answerPath, file )
+            if not os.path.exists( answerFile ) or os.path.isdir( answerFile ):
                 continue
-            folderPath = self.getPath( language )
-            if not os.path.exists( folderPath ):
+            number = os.path.splitext( file )[ 0 ] 
+            problemNumber = int( number )
+            if problemFilter and problemNumber not in problemFilter:
                 continue
-            for problem in os.listdir( folderPath ):
-                problemNumber = int( problem )
-                if problemFilter and problemNumber not in problemFilter:
+            with open( answerFile, 'r' ) as encodedAnswer:
+                rawAnswer = encodedAnswer.read()
+            answer = rawAnswer.strip().decode( 'bz2' )
+            print "Answer:", answer
+            for language, ext in self.extensions.items():
+                if languageFilter and language not in languageFilter:
                     continue
-                problemPath = os.path.join( folderPath, problem )
-                if not os.path.exists( problemPath ) or not os.path.isdir( problemPath ):
+                folderPath = self.getPath( language )
+                if not os.path.exists( folderPath ):
                     continue
-                yield {
-                    "language" : language,
-                    "problemNumber" : problemNumber,
-                    "problemPath" : problemPath,
-                }
-                    
+                for problem in os.listdir( folderPath ):            
+                    problemInt = int( problem )
+                    if problemInt is not problemNumber:
+                        continue
+                    problemFolder = os.path.join( folderPath, problem )
+                    if not os.path.exists( problemFolder ) or not os.path.isdir( problemFolder ):
+                        continue
+                    problemPath = os.path.join( problemFolder, self.sourceFile % ( problemInt, ext ) )
+                    yield {
+                        "language" : language,
+                        "problemNumber" : problemNumber,
+                        "problemPath" : problemPath,
+                        "answer" : answer,
+                    }
+                        
 class Execute:
     # Bash format.
     bashFormat = "bash %s.bash %s"
     answer = "%.4d.txt"
 
-    def __init__( self, folders, language, problemNumber, problemPath ):
+    def __init__( self, folders, language, problemNumber, problemPath, answer ):
         self.folders = folders
         self.language = language
-        self.problemPathNumber = problemNumber
+        self.problemNumber = problemNumber
         self.problemPath = problemPath
+        self.answer = answer
         self.cmd = ""
 
     def run( self ):
@@ -76,15 +91,10 @@ class Execute:
         startTime = time()
         status, output = commands.getstatusoutput( self.cmd )
         endTime = time()
-        answerTxt = self.answer % ( self.problemPathNumber, ) 
-        answerFile = os.path.join( self.folders.answerPath, answerTxt )
-        with open( answerFile, 'r' ) as encodedAnswer:
-            rawAnswer = encodedAnswer.read()
-        answer = rawAnswer.strip().decode( 'bz2' )
-        if status == 0 and output == answer:
+        if status == 0 and output == self.answer:
             print "Complete:", endTime - startTime
         else:
-            print 
+            print "Error", status, output, self.answer, self.language, self.problemNumber
 
 class ExecuteCpp( Execute ):
     def createCmd( self ):
@@ -93,9 +103,9 @@ class ExecuteCpp( Execute ):
         bash = os.path.join( self.folders.path, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
-def createExecInstance( folders, language, problemNumber, problemPath ):
-    className = eval( "Execute%s" % ( language.title(), ) )
-    return className( folders, language, problemNumber, problemPath )
+def createExecInstance( folders, **kwargs ):
+    className = eval( "Execute%s" % ( kwargs[ "language" ].title(), ) )
+    return className( folders, **kwargs )
 
 def main( filterLanguages = None, filterProblems = None ):
     filePath = os.path.realpath( __file__ )
@@ -105,4 +115,4 @@ def main( filterLanguages = None, filterProblems = None ):
         createExecInstance( folders, **program ).run()
 
 if __name__ == "__main__":
-    main( path )
+    main()
