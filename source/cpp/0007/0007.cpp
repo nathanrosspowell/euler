@@ -55,6 +55,7 @@ int main()
     int target = 10001;
     std::vector<int> primes;
     getPrimes( target, primes );
-    std::cout << "The " << target << " prime is " << primes[ target -1 ];
+    //std::cout << "The " << target << " prime is " << primes[ target -1 ];
+    std::cout << primes[ target -1 ] << std::endl;
     return errorValue;
 }

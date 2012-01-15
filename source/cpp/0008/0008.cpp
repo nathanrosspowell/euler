@@ -30,7 +30,8 @@ Find the greatest product of five consecutive digits in the 1000-digit number.
 
 #include <iostream>
 #include <stdlib.h>
-#include <string.h>
+#include <string>
+#pragma GCC diagnostic ignored "-Wwrite-strings"
 
 int main()
 {
@@ -61,15 +62,15 @@ int main()
         "05886116467109405077541002256983155200055935729725"
         "71636269561882670428252483600823257530420752963450";
     
-    char character[ 2 ] = {};
+    std::string character;
     for ( int i = 0; i < length - sequence; ++i )
     {
         int testScore = 1;
         for ( int j = 0; j < sequence; ++j)
         {
             int index = i + j;
-            strncpy_s( character, number + index, 1);
-            int oneNum = atoi( character );
+            character = std::string( number + index, 1);
+            int oneNum = atoi( character.c_str() );
             testScore *= oneNum;
         }
         
@@ -81,7 +82,7 @@ int main()
     
     }
     
-    std::cout << "Best score is " << score << std::endl;
+    std::cout << score << std::endl;
     
     return errorValue;
 }

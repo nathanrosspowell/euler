@@ -68,7 +68,7 @@ int main()
     std::vector< int > primes;
     getPrimes( 1000, primes );
     
-    std::cout << "Number of primes" << primes.size() << std::endl;
+    //std::cout << "Number of primes" << primes.size() << std::endl;
     
    /* for ( std::vector<int>::iterator it = primes.begin(); it != primes.end(); ++it )
     {
@@ -90,7 +90,7 @@ int main()
             if ( factorise % prime == 0 )
             {
                 factorise = factorise / prime;
-                std::cout << "Factor of " << prime << ". Working on " << factorise << std::endl;
+                //std::cout << "Factor of " << prime << ". Working on " << factorise << std::endl;
                 currentNode->factor = prime;
                 currentNode->nextNode = new FactorNode();
                 currentNode = currentNode->nextNode;
@@ -100,7 +100,7 @@ int main()
         
         if ( lastFactorise == factorise )
         {
-            std::cout << "Not enough primes? Issue with " << factorise << std::endl;
+            //std::cout << "Not enough primes? Issue with " << factorise << std::endl;
             work = false;
         }
     }
@@ -117,13 +117,13 @@ int main()
         currentNode = currentNode->nextNode;
     }
 
-    std::cout << "Number of factors" << factors.size() << std::endl;
+    //std::cout << "Number of factors" << factors.size() << std::endl;
 
-    std::cout << "Factors of  " << topNumber << " are ";
+    //std::cout << "Factors of  " << topNumber << " are ";
   
     for ( std::vector<int>::iterator it = factors.begin(); it != factors.end(); ++it )
     {
-        std::cout << *it << " ";
+        //std::cout << *it << " ";
     }
 
     std::cout << std::endl;    
@@ -131,9 +131,12 @@ int main()
 
     if ( max != factors.end() )
     {
-        std::cout << std::endl << "Larges factor is " << *max << std::endl;
+        std::cout <<  *max << std::endl;
     }
-
+    else
+    {
+        errorValue = 1;
+    }
     
     return errorValue;
 }

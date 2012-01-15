@@ -33,7 +33,7 @@ int main()
     }
     count *= count;
     
-    std::cout << "Difference " << count - squaredCount << std::endl;;
+    std::cout << count - squaredCount << std::endl;;
     
     return errorValue;
 }

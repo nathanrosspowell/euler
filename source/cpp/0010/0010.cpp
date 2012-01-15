@@ -37,6 +37,6 @@ int main()
     {
         total += isPrime( i );
     }
-    std::cout << "Total " << total << std::endl;
+    std::cout << total << std::endl;
     return errorValue;
 }

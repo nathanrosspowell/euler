@@ -44,7 +44,7 @@ int main()
         }
     }
 
-    std::cout << "The sum is " << sum << std::endl;
+    std::cout << sum << std::endl;
 
     return errorValue;
 }

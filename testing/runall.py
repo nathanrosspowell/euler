@@ -40,7 +40,7 @@ class Folders:
         return os.path.join( self.getPath( folder), subPath )
     
     def yieldPrograms( self, languageFilter = None, problemFilter = None ):
-        for file in os.listdir( self.answerPath ):
+        for file in sorted( os.listdir( self.answerPath ) ):
             answerFile = os.path.join( self.answerPath, file )
             if not os.path.exists( answerFile ) or os.path.isdir( answerFile ):
                 continue
@@ -51,7 +51,6 @@ class Folders:
             with open( answerFile, 'r' ) as encodedAnswer:
                 rawAnswer = encodedAnswer.read()
             answer = rawAnswer.strip().decode( 'bz2' )
-            print "Answer:", answer
             for language, ext in self.extensions.items():
                 if languageFilter and language not in languageFilter:
                     continue
@@ -91,10 +90,11 @@ class Execute:
         startTime = time()
         status, output = commands.getstatusoutput( self.cmd )
         endTime = time()
-        if status == 0 and output == self.answer:
+        print "problem:", self.problemNumber, "",
+        if status == 0 and output.strip() == self.answer:
             print "Complete:", endTime - startTime
         else:
-            print "Error", status, output, self.answer, self.language, self.problemNumber
+            print "Error", status, output, self.answer, self.language
 
 class ExecuteCpp( Execute ):
     def createCmd( self ):

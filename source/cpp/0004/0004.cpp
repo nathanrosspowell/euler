@@ -82,7 +82,7 @@ int main()
         }
     }
     
-    std::cout << "The largest palondromic number is " << palindromic << std::endl;
+    std::cout << palindromic << std::endl;
 
     return errorValue;
 }

@@ -40,7 +40,7 @@ int main()
         
     }
     
-    std::cout << "Smallest number " << result << std::endl;
+    std::cout << result << std::endl;
 
     return errorValue;
 }

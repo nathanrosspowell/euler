@@ -73,8 +73,9 @@ int main()
     }
     if ( done )
     {
-        std::cout << "RESULT: A " << a << " B " << b << " C " << c 
-            << " total = " << a*b*c << std::endl;
+        //std::cout << "RESULT: A " << a << " B " << b << " C " << c 
+        //    << " total = " << a*b*c << std::endl;
+        std::cout << a*b*c << std::endl;
     }
     else
     {
