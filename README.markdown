@@ -10,7 +10,7 @@ and secondly to aid in the learning of new programming languages
 * Haskell
 
 ## Executing
-This repro is tested against these versions:
+This repro is tested against these version.
 * Ubuntu 10.10
 * Python 2.6.6
 * GCC 4.4.5
