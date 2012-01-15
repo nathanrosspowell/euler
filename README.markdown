@@ -4,6 +4,8 @@ primarily to enhance my problem solving skills
 and secondly to aid in the learning of new programming languages.
 
 ## Languages
+Currently solutions are presented in
+
 * C plus plus
 * Python
 * Haskell
