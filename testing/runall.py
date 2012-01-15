@@ -106,6 +106,8 @@ class ExecuteCpp( Execute ):
         bash = os.path.join( self.folders.path, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
+ExecutePython = ExecuteCpp
+
 class ExecuteHaskell( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
