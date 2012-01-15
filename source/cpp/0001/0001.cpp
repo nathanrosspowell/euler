@@ -9,37 +9,19 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 */
 
-
 #include <iostream>
 
 int main()
 {
-    int errorValue = 0;
-
-    // Problem constants.
-    const int topNumber = 1000;
-    const int multiples[] = { 3, 5 };
-    const int numMultiples = sizeof( multiples )/sizeof( *multiples );
-    // Final value.
     int sum = 0;
-
-    for ( int number = 1; number < topNumber; ++number )
+    for ( int i = 1; i < 1000; ++i )
     {
-        for ( int multiple = 0; multiple < numMultiples; ++multiple )
+        if ( i % 3 == 0 || i % 5 == 0 )
         {
-            // Use modulus operator to see if the number is a multiple.
-            const int leftOver = number % multiples[ multiple ];
-            if ( leftOver == 0 )
-            {
-                // Add the number, then break to the next one.
-                sum += number;
-                break;
-            }
+          sum += i;
         }
     }
-
-    // Print our calculation.
-    std::cout << sum << std::endl;
-
-    return errorValue;
+    using namespace std;
+    cout << sum << endl;
+    return 0;
 } 
