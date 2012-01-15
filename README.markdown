@@ -20,12 +20,12 @@ This repro is tested against these versions
 
 Completed problems will be ran by the testing utility and double checked against the correct answer
 
-    testing/runall.py
+    testing/run.py
 
 To filter the testing add a language (or list of them) and a problem number (or list of them)
 
-    python testing/runspecific.py cpp 1
-    python testing/runspecific.py cpp 1 2 99 142
-    python testing/runspecific.py cpp haskell 1
-    python testing/runspecific.py cpp haskell 42 69
+    python testing/run.py cpp 1
+    python testing/run.py cpp 1 2 99 142
+    python testing/run.py cpp haskell 1
+    python testing/run.py cpp haskell 42 69
 

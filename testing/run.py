@@ -1,6 +1,7 @@
 #! /usr/bin/python
 
 import os
+import sys
 import commands
 from time import time
 
@@ -127,4 +128,14 @@ def main( filterLanguages = None, filterProblems = None ):
         createExecInstance( folders, **program ).run()
 
 if __name__ == "__main__":
-    main()
+    if len( sys.argv ) > 1:
+        filterLanguages = []
+        filterProblems = []
+        for arg in sys.argv[ 1: ]:
+            try:
+                filterProblems.append( int( arg ) )
+            except:
+                filterLanguages.append( arg )
+        main( filterLanguages, filterProblems )
+    else:
+        main()
