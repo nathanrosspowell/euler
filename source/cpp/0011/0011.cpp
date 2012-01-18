@@ -42,16 +42,15 @@ int checkPermutations( int x, int y )
 int main()
 {
     int errorValue = 0;
-    int topValue = 99;
     int topProduct = 0;
     for ( int x = 0; x < size; ++x )
     {
         for ( int y = 0; y < size; ++y )
         {
-            int val = data[ x ][ y ];
-            if ( val == topValue )
+            int product = checkPermutations( x, y );
+            if ( product > topProduct )
             {
-                topProduct = checkPermutations( x, y );
+                topProduct = product;
             }
         }
     }
