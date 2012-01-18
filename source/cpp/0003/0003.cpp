@@ -8,41 +8,57 @@
 
 typedef unsigned long long BigInt;
 
-bool isPrime( int test, std::vector<int>& primes )
+class GenPrimes
 {
-    std::vector<int>::iterator it;
-    for ( it = primes.begin(); it != primes.end(); ++it )
+public:
+    GenPrimes()
     {
-        int prime = *it;
-        if ( test == prime || test % prime == 0 )
+        primes.clear();
+        primes.push_back( 2 );
+    };
+
+    bool isPrime( int test )
+    {
+        std::vector<int>::iterator it;
+        for ( it = primes.begin(); it != primes.end(); ++it )
         {
-            return false;
+            int prime = *it;
+            if ( test == prime || test % prime == 0 )
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    int getPrime( int nthPrime )
+    {
+        int primeCount = primes.size();
+        if ( nthPrime < primeCount )
+        {
+            return primes[ nthPrime ];
+        }
+        else
+        {
+            int count = primes.back();
+            while ( true )
+            {
+                if ( isPrime( count ) )
+                {
+                    primes.push_back( count );
+                    ++primeCount;
+                    if ( primeCount > nthPrime )
+                    {
+                        return primes[ nthPrime ]; 
+                    }
+                }
+                ++count;
+            }
         }
     }
-    primes.push_back( test );
-    return true;
-}
-
-
-void getPrimes( int limit, std::vector<int>& primes)
-{
-    primes.clear();
-    primes.push_back( 2 );
-    int count = 2;
-    int primeCount = 0;
-    while ( true )
-    {
-        if ( isPrime( count, primes ) )
-        {
-            ++primeCount;
-        }
-        if ( primeCount >= limit)
-        {
-            return;
-        }
-        ++count;
-    }
-}
+private:
+    std::vector< int > primes;
+};
 
 struct FactorNode
 {
@@ -53,50 +69,27 @@ struct FactorNode
 int main()
 {
     int errorValue = 0;
-
-    // Problem constants.
     BigInt topNumber = 600851475143LL;
-    
-    std::vector< int > primes;
-    getPrimes( 1000, primes );
-    
-    //std::cout << "Number of primes" << primes.size() << std::endl;
-    
-   /* for ( std::vector<int>::iterator it = primes.begin(); it != primes.end(); ++it )
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-    */
-    
     FactorNode node;
     FactorNode* currentNode = &node;
     BigInt factorise = topNumber;
     bool work = true;
+    GenPrimes primes;
     while( factorise != 1 && work )
     {
         BigInt lastFactorise = factorise;
-        for ( std::vector<int>::iterator it = primes.begin(); it != primes.end(); ++it )
+        for ( int i = 0, prime = 0; prime = primes.getPrime( i ); ++i )
         {
-            int prime = *it;
             if ( factorise % prime == 0 )
             {
                 factorise = factorise / prime;
-                //std::cout << "Factor of " << prime << ". Working on " << factorise << std::endl;
                 currentNode->factor = prime;
                 currentNode->nextNode = new FactorNode();
                 currentNode = currentNode->nextNode;
                 break;
             }
         }
-        
-        if ( lastFactorise == factorise )
-        {
-            //std::cout << "Not enough primes? Issue with " << factorise << std::endl;
-            work = false;
-        }
     }
-    
     std::vector<int> factors;
     currentNode = &node; 
     while ( currentNode )
@@ -108,19 +101,7 @@ int main()
         }
         currentNode = currentNode->nextNode;
     }
-
-    //std::cout << "Number of factors" << factors.size() << std::endl;
-
-    //std::cout << "Factors of  " << topNumber << " are ";
-  
-    for ( std::vector<int>::iterator it = factors.begin(); it != factors.end(); ++it )
-    {
-        //std::cout << *it << " ";
-    }
-
-    std::cout << std::endl;    
     std::vector<int>::iterator max = std::max_element( factors.begin(), factors.end() );
-
     if ( max != factors.end() )
     {
         std::cout <<  *max << std::endl;
@@ -129,6 +110,5 @@ int main()
     {
         errorValue = 1;
     }
-    
     return errorValue;
 }
