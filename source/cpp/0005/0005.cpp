@@ -1,19 +1,10 @@
-/*
+// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-Problem XXX
-30 November 2001
-
-2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
-
-What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
-
-*/
-
-#include <iostream>
+ #include <iostream>
 
 int main()
 {
-    int errorValue = 0;
     int divide = 20;
     int result = -1;
     int current = divide;
@@ -28,7 +19,6 @@ int main()
                 break;
             }
         }
-        
         if ( divisable )
         {
             result = current;
@@ -37,10 +27,7 @@ int main()
         {
             current += divide;
         }
-        
     }
-    
-    std::cout << result << std::endl;
-
-    return errorValue;
+    std::cout << result << std::endl; 
+    return 0; 
 }
