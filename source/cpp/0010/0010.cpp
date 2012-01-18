@@ -9,7 +9,7 @@ typedef long long BigInt;
 
 int isPrime( int test )
 {
-    int sqRoot = sqrt( static_cast< double >( test ) );
+    float sqRoot = sqrt( static_cast< float >( test ) );
     int sqRootInt = static_cast< int >( sqRoot ) + 1;
     for ( int i = 2; i < sqRootInt; ++i )
     {
