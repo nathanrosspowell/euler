@@ -98,13 +98,14 @@ class Execute:
         else:
             print "Error", status, output, self.answer, self.language
         args = "%s %s" %  os.path.split( self.problemPath )
-        os.system( self.cleanUp % ( self.folders.path, args ) )
+        os.system( self.cleanUp % ( os.path.join( self.folders.path, "bash" ), args ) )
         
 class ExecuteCpp( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s" % ( folder, self.problemPath )
-        bash = os.path.join( self.folders.path, self.language )
+        bashFolder = os.path.join( self.folders.path, "bash" )
+        bash = os.path.join( bashFolder, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
 ExecutePython = ExecuteCpp
@@ -113,7 +114,8 @@ class ExecuteHaskell( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )
-        bash = os.path.join( self.folders.path, self.language )
+        bashFolder = os.path.join( self.folders.path, "bash" )
+        bash = os.path.join( bashFolder, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
 def createExecInstance( folders, **kwargs ):
