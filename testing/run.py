@@ -30,6 +30,7 @@ class Folders:
         self.projectPath, folder = os.path.split( path )
         self.sourcePath = os.path.join( self.projectPath, "source" )
         self.answerPath = os.path.join( self.path, "answers" )
+        self.bashPath = os.path.join( self.path, "bash" )
 
     def getPath( self, folder ):
         return os.path.join( self.sourcePath, folder )
@@ -98,14 +99,13 @@ class Execute:
         else:
             print "Error", status, output, self.answer, self.language
         args = "%s %s" %  os.path.split( self.problemPath )
-        os.system( self.cleanUp % ( os.path.join( self.folders.path, "bash" ), args ) )
+        os.system( self.cleanUp % ( self.folders.bashPath, args ) )
         
 class ExecuteCpp( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s" % ( folder, self.problemPath )
-        bashFolder = os.path.join( self.folders.path, "bash" )
-        bash = os.path.join( bashFolder, self.language )
+        bash = os.path.join( self.folders.bashPath, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
 ExecutePython = ExecuteCpp
@@ -114,8 +114,7 @@ class ExecuteHaskell( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )
-        bashFolder = os.path.join( self.folders.path, "bash" )
-        bash = os.path.join( bashFolder, self.language )
+        bash = os.path.join( self.folders.bashPath, self.language )
         self.cmd = self.bashFormat % ( bash, args )
 
 def createExecInstance( folders, **kwargs ):
