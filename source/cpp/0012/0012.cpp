@@ -108,7 +108,7 @@ int main()
         }   
         if ( factors > 500 )
         {
-            std::cout << "POO " << triangleNumber << " factors " << factors << std::endl;
+            std::cout << triangleNumber << std::endl;
         } 
     }
     return errorValue;
