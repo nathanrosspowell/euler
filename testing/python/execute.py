@@ -28,7 +28,10 @@ class Execute:
         )
 
     def run( self ):
-        print "[%s][%.4d]" % ( self.language.upper(), self.problemNumber, ),
+        spaces = 20 
+        printLine = "[%s][%.4d]" % ( self.language.upper(), self.problemNumber, )
+        print "%s%s| " % ( printLine, " " * ( spaces - len( printLine ) ) ),
+        sys.stdout.flush()
         self.createCmd()
         startTime = time()
         status, output = commands.getstatusoutput( self.cmd )
