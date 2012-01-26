@@ -43,26 +43,25 @@ while True:
     counter += 1
     factorList = []
     primeFactors = []
-    primeCount = 0
-    while True:
-        prime = primes.getPrime( primeCount )
-        primeCount += 1
-        if prime > triangleNumber:
-            break;
-        elif triangleNumber % prime == 0:
-            primeFactors.append( prime )
-    for factor in primeFactors:
-        multiple = 1
+    triCopy = triangleNumber
+    while triCopy is not 1:
+        primeCount = 0
         while True:
-            factor = prime * multiple
-            multiple += 1 
-            if factor <= triangleNumber:
-                factorList.append( factor )
-            else:
+            prime = primes.getPrime( primeCount )
+            primeCount += 1
+            if triCopy % prime == 0:
+                triCopy /= prime
+                primeFactors.append( prime )
                 break
-    num = len( set( factorList ) )
-    if num >= 500:
+    counts = {}
+    for factor in primeFactors:
+        if counts.has_key( factor ):
+            counts[ factor ] += 1
+        else:
+            counts[ factor ] = 1
+    num = 1
+    for key, value in counts.items():
+        num *= ( value + 1 )
+    if num > 500:
         break
-    else:
-        print "Fail %d factors %s" % ( triangleNumber, num )
 print triangleNumber

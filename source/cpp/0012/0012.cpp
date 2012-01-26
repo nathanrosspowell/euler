@@ -73,15 +73,14 @@ int main()
         factors = 1;
         triangleNumber += counter++;
         std::vector< int > node;
-        bool work = true;
         int triCopy = triangleNumber;
-        while( triCopy != 1 && work )
+        while( triCopy != 1 )
         {
             for ( int i = 0, prime = 0; prime = primes.getPrime( i ); ++i )
             {
                 if ( triCopy % prime == 0 )
                 {
-                    triCopy = triCopy / prime;
+                    triCopy /= prime;
                     node.push_back( prime );
                     break;
                 }
