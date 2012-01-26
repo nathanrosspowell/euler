@@ -11,9 +11,13 @@ def main( filterLanguages = None, filterProblems = None ):
     filePath = os.path.realpath( __file__ )
     path, file  = os.path.split( filePath )
     folders = Folders( path )
+    spacer = "---------------------------------------------------------------"
+    print spacer
+    print "Project Euler."
+    print spacer
     for program in folders.yieldPrograms( filterLanguages, filterProblems ):
         createExecInstance( folders, **program ).run()
-
+        print spacer
 if __name__ == "__main__":
     if len( sys.argv ) > 1:
         filterLanguages = []

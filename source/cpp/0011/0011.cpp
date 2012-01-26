@@ -41,7 +41,6 @@ int checkPermutations( int x, int y )
 
 int main()
 {
-    int errorValue = 0;
     int topProduct = 0;
     for ( int x = 0; x < size; ++x )
     {
@@ -55,5 +54,5 @@ int main()
         }
     }
     std::cout << topProduct << std::endl;
-    return errorValue;
+    return 0;
 }

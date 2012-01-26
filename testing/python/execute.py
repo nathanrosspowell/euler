@@ -8,6 +8,10 @@ class Execute:
     bashFormat = "bash %s.bash %s"
     answer = "%.4d.txt"
     cleanUp = "bash %s/cleanup.bash %s"
+    success = "\033[92m"
+    warn = "\033[93m"
+    fail = "\033[91m"
+    end = "\033[0m"
 
     def __init__( self, folders, language, problemNumber, problemPath, answer ):
         self.folders = folders
@@ -16,17 +20,35 @@ class Execute:
         self.problemPath = problemPath
         self.answer = answer
         self.cmd = ""
+    def printCol( self, colour, form, args ):
+        print "%s%s%s" % (
+            colour,
+            form % args,
+            self.end
+        )
 
     def run( self ):
+        print "[%s][%.4d]" % ( self.language.upper(), self.problemNumber, ),
         self.createCmd()
         startTime = time()
         status, output = commands.getstatusoutput( self.cmd )
         endTime = time()
-        print "Problem:", self.problemNumber, "",
         if status == 0 and output.strip() == self.answer:
-            print "Complete:", endTime - startTime
+            timer = endTime - startTime
+            if timer > 60.0:
+                colour = self.warn
+                warn = " Should be under 60.00."
+            else:
+                colour = self.success
+                warn = ""
+            self.printCol( colour, "~%.2f seconds.%s", ( timer, warn ) )
         else:
-            print "Error", status, output, self.answer, self.language
+            self.printCol( self.fail, 
+                """Error!
+    Status: %s
+    Output: %s""",
+                ( status, output, )
+        )
         args = "%s %s" %  os.path.split( self.problemPath )
         os.system( self.cleanUp % ( self.folders.bashPath, args ) )
         
