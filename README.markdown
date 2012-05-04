@@ -10,7 +10,7 @@ Currently solutions are presented in
 * Python
 * Haskell
 
-## Executing
+## Installing
 This repro is tested against these versions
     
 * Ubuntu 10.10
@@ -18,6 +18,9 @@ This repro is tested against these versions
 * GCC 4.4.5
 * Glasgow Compiler 6.12.1
 
+Call the bash script `install.bash` to get the needed software.
+
+## Executing
 Completed problems will be ran by the testing utility and double checked against the correct answer
 
     testing/run.py
