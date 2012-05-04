@@ -31,4 +31,5 @@ To filter the testing add a language (or list of them) and a problem number (or 
     python testing/run.py cpp 1 2 99 142
     python testing/run.py cpp haskell 1
     python testing/run.py cpp haskell 42 69
+    python testing/run.py cpp python
 
