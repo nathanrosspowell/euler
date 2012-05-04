@@ -1,5 +1,5 @@
 #!/bin/bash
 pushd $1 1>/dev/null 
-ghc -O $2 1>/dev/null
-./$2
+ghc -v0 -O -o program $2 1>/dev/null
+./program
 popd 1>/dev/null
