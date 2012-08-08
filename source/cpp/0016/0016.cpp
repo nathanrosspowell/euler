@@ -2,6 +2,6 @@
 
 int main()
 {
-    std::cout << "404" << std::endl;
+    std::cout << "404!" << std::endl;
     return 0;
 }

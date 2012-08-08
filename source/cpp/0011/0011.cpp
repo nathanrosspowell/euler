@@ -53,6 +53,6 @@ int main()
             }
         }
     }
-    std::cout << topProduct << std::endl;
+    std::cout << "404!" << std::endl;
     return 0;
 }
