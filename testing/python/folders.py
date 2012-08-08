@@ -16,23 +16,23 @@ class Folders:
     language = {
         langC : {
             ext : ".c",
-            exe : None,
+            exe : ( None, ),
         },
         langCpp : {
             ext : ".cpp",
-            exe : ExecuteCpp
+            exe : ( ExecuteGcc, ExecuteClang ),
         },
         langPython : {
             ext : ".py",
-            exe : ExecutePython,
+            exe : ( ExecutePython, ),
         },
         langHaskell : {
             ext : ".hs",
-            exe : ExecuteHaskell,
+            exe : ( ExecuteHaskell, ),
         },
         langScala : {
             ext : ".scala",
-            exe : None,
+            exe : ( None, ),
         },
     }
     # Problem fomats.

@@ -20,6 +20,7 @@ class Execute:
         self.problemPath = problemPath
         self.answer = answer
         self.cmd = ""
+
     def printCol( self, colour, form, args ):
         print "%s%s%s" % (
             colour,
@@ -28,8 +29,8 @@ class Execute:
         )
 
     def run( self ):
-        spaces = 20 
-        printLine = "[%s][%.4d]" % ( self.language.upper(), self.problemNumber, )
+        spaces = 30 
+        printLine = "[%s][%s][%.4d]" % ( self.language.upper(), self.version.upper(), self.problemNumber, )
         print "%s%s| " % ( printLine, " " * ( spaces - len( printLine ) ) ),
         sys.stdout.flush()
         self.createCmd()
@@ -46,7 +47,7 @@ class Execute:
                 warn = ""
             self.printCol( colour, "~%.2f seconds.%s", ( timer, warn ) )
         else:
-            self.printCol( self.fail, 
+            self.printCol( self.fail,
                 """Error!
     Status: %s
     Output: %s""",
@@ -54,17 +55,23 @@ class Execute:
         )
         args = "%s %s" %  os.path.split( self.problemPath )
         os.system( self.cleanUp % ( self.folders.bashPath, args ) )
-        
-class ExecuteCpp( Execute ):
+
+class ExecuteGcc( Execute ):
+    version = "gcc"
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s" % ( folder, self.problemPath )
-        bash = os.path.join( self.folders.bashPath, self.language )
+        bash = os.path.join( self.folders.bashPath, self.version)
         self.cmd = self.bashFormat % ( bash, args )
 
-ExecutePython = ExecuteCpp
+class ExecutePython( ExecuteGcc ):
+    version = "cpython"
+
+class ExecuteClang( ExecuteGcc ):
+    version = "clang"
 
 class ExecuteHaskell( Execute ):
+    version = "glasgow"
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )

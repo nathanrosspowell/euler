@@ -4,8 +4,8 @@ import sys
 from python.folders import Folders
 
 def createExecInstance( folders, **kwargs ):
-    className = folders.language[ kwargs[ "language" ] ][ Folders.exe ] 
-    return className( folders, **kwargs )
+    for execute in folders.language[ kwargs[ "language" ] ][ Folders.exe ]:
+        yield execute( folders, **kwargs )
 
 def main( filterLanguages = None, filterProblems = None ):
     filePath = os.path.realpath( __file__ )
@@ -16,8 +16,10 @@ def main( filterLanguages = None, filterProblems = None ):
     print "Project Euler."
     print spacer
     for program in folders.yieldPrograms( filterLanguages, filterProblems ):
-        createExecInstance( folders, **program ).run()
-        print spacer
+        for execInst in createExecInstance( folders, **program ):
+            execInst.run()
+            print spacer
+
 if __name__ == "__main__":
     if len( sys.argv ) > 1:
         filterLanguages = []
