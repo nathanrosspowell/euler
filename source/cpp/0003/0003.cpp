@@ -78,7 +78,7 @@ int main()
     while( factorise != 1 && work )
     {
         BigInt lastFactorise = factorise;
-        for ( int i = 0, prime = 0; prime = primes.getPrime( i ); ++i )
+        for ( int i = 0, prime = 0; ( prime = primes.getPrime( i ) ); ++i )
         {
             if ( factorise % prime == 0 )
             {

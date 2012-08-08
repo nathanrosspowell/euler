@@ -76,7 +76,7 @@ int main()
         int triCopy = triangleNumber;
         while( triCopy != 1 )
         {
-            for ( int i = 0, prime = 0; prime = primes.getPrime( i ); ++i )
+            for ( int i = 0, prime = 0; ( prime = primes.getPrime( i ) ); ++i )
             {
                 if ( triCopy % prime == 0 )
                 {

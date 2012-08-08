@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <string>
 #pragma GCC diagnostic ignored "-Wwrite-strings"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-writable-strings"
 
 int main()
 {
@@ -73,3 +75,4 @@ int main()
     std::cout << score << std::endl;
     return errorValue;
 }
+#pragma clang diagnostic pop
