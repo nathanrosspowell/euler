@@ -13,9 +13,10 @@ Currently solutions are presented in
 ## Installing
 This repro is tested against these versions
     
-* Ubuntu 10.10
+* Ubuntu 12.04 & 11.10
 * Python 2.6.6
 * GCC 4.4.5
+* Clang 2.9
 * Glasgow Compiler 6.12.1
 
 Call the bash script `install.bash` to get the needed software.
@@ -33,3 +34,6 @@ To filter the testing add a language (or list of them) and a problem number (or 
     python testing/run.py cpp haskell 42 69
     python testing/run.py cpp python
 
+## Solutions
+
+Nothing here is groundbreaking, super minimal or extremely optimal code. The solutions are of the most part coded upto to getting the correct answer, then plopped into source control. It's the actual completion of the problems that I'm aiming for!
