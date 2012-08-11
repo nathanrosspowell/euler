@@ -48,39 +48,31 @@ thousand = "thousand"
 
 def getWord( number):
     strnum = str( number )[ :: -1 ]
-    #print "NUMMM", strnum
     word = ""
     usedAnd = False
-    for i in reversed( range(  len( strnum ) ) ):
+    for i in range( len( strnum ) - 1, -1, -1 ):
         n = int( strnum[ i ] )
-        #print "Loop i:", i, n, strnum[ i ]
         if n == 0:
             continue
         if i == 3:
             word += " %s %s" % ( units[ n ], thousand )
-            #print "Tho", word
         elif i == 2:
             word += " %s %s" % ( units[ n ], hundred )
-            #print "Hun", word
         elif i == 1:
             if len( word ) > 0 and not usedAnd: 
                 word += " and"
                 usedAnd = True 
-                #print "AND"
             if n > 1:
                 word += " %s" % ( tens[ n ], )
-                #print "Tens", word
             else:
                 n2 = int( strnum[ :2 ][ :: -1 ] )
                 word += " %s" % ( units[ n2 ], )
-                #print "Units2", word, n2
                 break
         else:
             if len( strnum ) > 2 and not usedAnd: 
                 word += " and"
                 usedAnd = True 
             word += " %s" % ( units[ n ], )
-            #print "Units", word
     return word
 
 if __name__ == "__main__":
