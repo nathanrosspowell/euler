@@ -1,4 +1,7 @@
 # PROJECT EULER
+
+<img src="http://projecteuler.net/profile/nathanrosspowell.png" />
+
 I have been attempting the Project Euler challenges as a learning exercise - 
 primarily to enhance my problem solving skills
 and secondly to aid in the learning of new programming languages.
