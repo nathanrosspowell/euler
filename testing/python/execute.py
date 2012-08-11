@@ -79,6 +79,6 @@ class ExecuteHaskell( Execute ):
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )
-        bash = os.path.join( self.folders.bashPath, self.language )
+        bash = os.path.join( self.folders.bashPath, self.version )
         self.cmd = self.bashFormat % ( bash, args )
 
