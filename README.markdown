@@ -1,7 +1,5 @@
 # PROJECT EULER
-I have been attempting the Project Euler challenges as a learning exercise - 
-primarily to enhance my problem solving skills
-and secondly to aid in the learning of new programming languages.
+I have been attempting the Project Euler challenges as a learning exercise - primarily to enhance my problem solving skills and secondly to aid in the learning of new programming languages.
 
 ## Languages
 Currently solutions are presented in
@@ -11,8 +9,8 @@ Currently solutions are presented in
 * Haskell
 
 ## Installing
-This repro is tested against these versions
-    
+This repo is tested against these versions
+
 * Ubuntu 12.04 & 11.10
 * Python 2.6.6
 * GCC 4.4.5
@@ -36,4 +34,6 @@ To filter the testing add a language (or list of them) and a problem number (or 
 
 ## Solutions
 
-Nothing here is groundbreaking, super minimal or extremely optimal code. The solutions are of the most part coded upto to getting the correct answer, then plopped into source control. It's the actual completion of the problems that I'm aiming for!
+Nothing here is groundbreaking, super minimal or extremely optimal code.
+The solutions are of the most part coded upto getting the correct answer, then plopped into source control.
+It's the actual completion of the problems that I'm aiming for!
