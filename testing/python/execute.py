@@ -46,7 +46,7 @@ class Execute:
                 colour = self.success
                 warn = ""
             self.printCol( colour, "~%.2f seconds.%s", ( timer, warn ) )
-        elif output.strip() == "404!":
+        elif output.strip().find( "404!" ) != -1:
             colour = self.warn
             warn = "Implementation not complete."
             self.printCol( colour, "%s", ( warn ) )
