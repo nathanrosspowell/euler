@@ -7,7 +7,7 @@
 // and 110; therefore d(220) - 284.
 // The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
 //
-// Evaluate the sum of all the amicable numbers under 10000.
+// Evaluate the sum of all the amicable numbers under limit.
 #include <iostream>
 
 unsigned int sum( unsigned int number )
@@ -25,16 +25,17 @@ unsigned int sum( unsigned int number )
 
 int main()
 {
+    const unsigned int limit = 10000;
     unsigned int totalSum = 0; 
-    unsigned int sums[ 10000 ] = {};
-    for ( unsigned int i = 0; i < 10000; ++i )
+    unsigned int sums[ limit ] = {};
+    for ( unsigned int i = 0; i < limit; ++i )
     {
         sums[ i ] = sum( i );
     }
-    for ( unsigned int i = 0; i < 10000; ++i )
+    for ( unsigned int i = 0; i < limit; ++i )
     {
         unsigned int number = sums[ i ];
-        if (  number < 10000 && sums[ number ] == i && number != i )
+        if ( number < limit && sums[ number ] == i && number != i )
         {
             totalSum += number;
         }
