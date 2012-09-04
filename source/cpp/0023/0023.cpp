@@ -19,28 +19,20 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
-#include <algorithm>
 
-typedef unsigned int uint;
+typedef int uint;
 typedef std::vector< uint > List;
+
 
 uint sum( uint number )
 {   
     uint total = 0;
-    List div;
-    for ( unsigned int i = 1; i <= number / 2; ++i )
+    for ( unsigned int i = 1; i < number; ++i )
     {
         if ( number % i == 0 )
         {
-            if ( std::find( div.begin(), div.end(), i ) == div.end() )
-            {
-                div.push_back( i );
-            }
+            total += i;
         }
-    }
-    for ( List::iterator i = div.begin(); i != div.end(); ++ i )
-    {
-        total += *i;
     }
     return total;
 }
@@ -57,40 +49,34 @@ int main()
             abundant.push_back( num );
         }
     }
-
-    std::cout << "Abundants: " << abundant.size() << std::endl;
-
-    std::vector< bool > fromPair( limit + 1 );
+    std::vector< bool > fromPair( limit );
     for ( int i = 0; i < fromPair.size(); ++i )
     {
         fromPair[ i ] = false;
     }
-
     for ( int i = 0; i < abundant.size(); ++i )
     {
-        for ( int j = i; j < abundant.size(); ++j )
+        for ( int j = 0; j < abundant.size(); ++j )
         {
             uint pair = abundant[ i ] + abundant[ j ];
-            if ( pair <= limit )
+            if ( pair < limit )
             {
                 fromPair[ pair ] = true;
             }
+            else
+            {
+                break;
+            }
         }
     }
-
     uint totalSum = 0; 
-    uint numnonPairs = 0;
-    for ( uint i = 0; i < abundant.size(); ++i )
+    for ( uint i = 0; i < limit; ++i )
     {
-        uint a = abundant[ i ];
-        if ( !fromPair[ a ] )
+        if ( !fromPair[ i ] )
         {
-            totalSum += a;
-            ++numnonPairs; 
-            std::cout << "  " << a << std::endl;
+            totalSum += i;
         }
     }
-    std::cout << numnonPairs << std::endl;
     std::cout << totalSum << std::endl;
     return 0;
 }
