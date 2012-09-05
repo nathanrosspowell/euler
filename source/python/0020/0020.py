@@ -6,4 +6,4 @@
 #
 # Find the sum of the digits in the number 100!
 import operator
-print reduce(lambda x,y:int(x)+int(y),str(reduce(operator.mul,xrange(2,101))))
+print sum( map( int, str(reduce(operator.mul,xrange(2,101) ) ) ) )
