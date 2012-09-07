@@ -17,18 +17,20 @@ int pow( int num )
 
 int main()
 {
+    int limit = pow( 9 ) * 6;
+    bool done = false;
     int total = -1;
-    for ( int hth = 0; hth < 10; ++hth )
+    for ( int hth = 0; hth < 10 && !done; ++hth )
     {
-        for ( int tth = 0; tth < 10; ++tth )
+        for ( int tth = 0; tth < 10 && !done; ++tth )
         {
-            for ( int tho = 0; tho < 10; ++tho )
+            for ( int tho = 0; tho < 10 && !done; ++tho )
             {
-                for ( int hun = 0; hun < 10; ++hun )
+                for ( int hun = 0; hun < 10 && !done; ++hun )
                 {
-                    for ( int ten = 0; ten < 10; ++ten)
+                    for ( int ten = 0; ten < 10 && !done; ++ten)
                     {
-                        for ( int unit = 0; unit < 10; ++unit )
+                        for ( int unit = 0; unit < 10 && !done; ++unit )
                         {
                             int number = ( hth * 100000 )
                                        + ( tth * 10000 )
@@ -45,6 +47,10 @@ int main()
                             if ( number == power )
                             {
                                 total += number;
+                            }
+                            if ( number >= limit )
+                            {
+                                done = true;
                             }
                         }
                     }
