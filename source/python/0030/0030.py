@@ -8,4 +8,4 @@
 # The sum of these numbers is 1634 + 8208 + 10474 = 110316.
 # 
 # Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
-print sum(x for x in xrange(1000000)if x==sum(map(lambda x:int(x)**5,str(x))))-1
+print sum(x for x in xrange(2,1000000)if x==sum(int(n)**5 for n in str(x)))
