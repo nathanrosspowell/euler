@@ -9,21 +9,17 @@
 
 typedef unsigned long long BigInt;
 
-bool sequence( BigInt num, int& chain )
+int sequence( BigInt num, int chain = 0 )
 {
-    ++chain;
-    if ( num > 1 )
+    if ( num <= 1 )
     {
-        if ( num % 2 == 0 )
-        {
-            return sequence( num / 2, chain );        
-        }
-        else
-        {
-            return sequence( (3 * num) + 1, chain );
-        }
+        return chain;
     }
-    return num == 1;
+    else if ( num % 2 == 0 )
+    {
+        return sequence( num / 2, ++chain );        
+    }
+    return sequence( 3 * num + 1, ++chain );
 }
 
 int main()
@@ -33,8 +29,8 @@ int main()
     int biggestChainNum = 0;
     for ( BigInt i = 1; i < limit; ++i )
     {
-        int chain = 0;
-        if ( sequence( i, chain ) && chain > biggestChain )
+        int chain = sequence( i ); 
+        if ( chain > biggestChain )
         { 
             biggestChain = chain;
             biggestChainNum = i;
