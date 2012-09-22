@@ -1,10 +1,14 @@
 # PROJECT EULER
-I have been attempting the Project Euler challenges as a learning exercise - primarily to enhance my problem solving skills and secondly to aid in the learning of new programming languages.
+<img src="http://projecteuler.net/profile/nathanrosspowell.png" />
+
+I have been attempting the Project Euler challenges as a learning exercise - 
+primarily to enhance my problem solving skills
+and secondly to aid in the learning of new programming languages.
 
 ## Languages
 Currently solutions are presented in
 
-* C plus plus
+* C++
 * Python
 * Haskell
 
@@ -22,15 +26,18 @@ Call the bash script `install.bash` to get the needed software.
 ## Executing
 Completed problems will be ran by the testing utility and double checked against the correct answer
 
-    testing/run.py
+    python testing/run.py
 
 To filter the testing add a language (or list of them) and a problem number (or list of them)
 
+    python testing/run.py cpp
+    python testing/run.py python
+    python testing/run.py cpp python
     python testing/run.py cpp 1
     python testing/run.py cpp 1 2 99 142
     python testing/run.py cpp haskell 1
     python testing/run.py cpp haskell 42 69
-    python testing/run.py cpp python
+
 
 ## Solutions
 
