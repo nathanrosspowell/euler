@@ -9,6 +9,7 @@ class Folders:
     langPython = "python"
     langHaskell = "haskell"
     langScala = "scala"
+    langD = "d"
     # Keys.
     ext = "etx"
     exe = "exe"
@@ -33,6 +34,10 @@ class Folders:
         langScala : {
             ext : ".scala",
             exe : ( None, ),
+        },
+        langD : {
+            ext : ".d",
+            exe : ( ExecuteGdc, ),
         },
     }
     # Problem fomats.

@@ -74,6 +74,14 @@ class ExecutePython( ExecuteGcc ):
 class ExecuteClang( ExecuteGcc ):
     version = "clang"
 
+class ExecuteGdc( ExecuteGcc ):
+    version = "gdc"
+    def createCmd( self ):
+        folder, fileName = os.path.split( self.problemPath )
+        args = "%s %s/d%.4d.d" % ( folder, folder, self.problemNumber )
+        bash = os.path.join( self.folders.bashPath, self.version )
+        self.cmd = self.bashFormat % ( bash, args )
+
 class ExecuteHaskell( Execute ):
     version = "glasgow"
     def createCmd( self ):

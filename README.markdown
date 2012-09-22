@@ -11,6 +11,7 @@ Currently solutions are presented in
 * C++
 * Python
 * Haskell
+* D
 
 ## Installing
 This repo is tested against these versions
@@ -20,6 +21,7 @@ This repo is tested against these versions
 * GCC 4.4.5
 * Clang 2.9
 * Glasgow Compiler 6.12.1
+* GDC
 
 Call the bash script `install.bash` to get the needed software.
 
