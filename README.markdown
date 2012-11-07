@@ -46,3 +46,14 @@ To filter the testing add a language (or list of them) and a problem number (or 
 Nothing here is groundbreaking, super minimal or extremely optimal code.
 The solutions are of the most part coded upto getting the correct answer, then plopped into source control.
 It's the actual completion of the problems that I'm aiming for!
+
+
+## To do
+
+* Make a seperate list of C solution, move C++ to using as much C++11 features as possible.
+* Redo testing to allow for multiple solutions in the same language. (functional and imperative solutions, differnt approaches etc.)
+* Have different run methods for languages that have the option to be interpreted and compiled.
+* Make and store output data from the testing functionalilty
+    * Include stats on the best and worst solutions from each language
+    * Include some kind of graphic
+    * Make a website with the github pages feature
