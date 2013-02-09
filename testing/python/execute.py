@@ -1,8 +1,15 @@
+##!/usr/bin/python
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# PyCast. Authored by Nathan Ross Powell.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Imports.
 import os
 import sys
 import commands
 from time import time
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Main class
 class Execute:
     # Bash format.
     bashFormat = "bash %s.bash %s"
@@ -12,7 +19,7 @@ class Execute:
     warn = "\033[93m"
     fail = "\033[91m"
     end = "\033[0m"
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def __init__( self, folders, language, problemNumber, problemPath, answer ):
         self.folders = folders
         self.language = language
@@ -20,14 +27,14 @@ class Execute:
         self.problemPath = problemPath
         self.answer = answer
         self.cmd = ""
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def printCol( self, colour, form, args ):
         print "%s%s%s" % (
             colour,
             form % args,
             self.end
         )
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def run( self ):
         spaces = 30 
         printLine = "[%s][%s][%.4d]" % ( self.language.upper(), self.version.upper(), self.problemNumber, )
@@ -60,30 +67,38 @@ class Execute:
         args = "%s %s" %  os.path.split( self.problemPath )
         os.system( self.cleanUp % ( self.folders.bashPath, args ) )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecuteGcc( Execute ):
     version = "gcc"
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s" % ( folder, self.problemPath )
         bash = os.path.join( self.folders.bashPath, self.version)
         self.cmd = self.bashFormat % ( bash, args )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecutePython( ExecuteGcc ):
     version = "cpython"
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecuteClang( ExecuteGcc ):
     version = "clang"
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecuteGdc( ExecuteGcc ):
     version = "gdc"
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s/d%.4d.d" % ( folder, folder, self.problemNumber )
         bash = os.path.join( self.folders.bashPath, self.version )
         self.cmd = self.bashFormat % ( bash, args )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecuteHaskell( Execute ):
     version = "glasgow"
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
         args = "%s %s %.4d.o" % ( folder, self.problemPath, self.problemNumber )

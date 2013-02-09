@@ -1,6 +1,13 @@
+##!/usr/bin/python
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# PyCast. Authored by Nathan Ross Powell.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Imports.
 import os
 from python.execute import *
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Main class.
 class Folders:
     problems = "problems"
     # Language options.
@@ -43,23 +50,23 @@ class Folders:
     # Problem fomats.
     folderFormat = "%.4d"
     sourceFile = "%.4d%s"
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def __init__( self, path ):
         self.path = path
         self.projectPath, folder = os.path.split( path )
         self.sourcePath = os.path.join( self.projectPath, "source" )
         self.answerPath = os.path.join( self.path, "answers" )
         self.bashPath = os.path.join( self.path, "bash" )
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def getPath( self, folder ):
         return os.path.join( self.sourcePath, folder )
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def getSourceFile( self, folder, problem ):
         subPath = os.path.join( self.folderFormat % ( problem, ),
             self.sourceFile % ( problem, self.extensions[ folder ] )
         )
         return os.path.join( self.getPath( folder), subPath )
-    
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def yieldPrograms( self, languageFilter = None, problemFilter = None ):
         for file in sorted( os.listdir( self.answerPath ) ):
             answerFile = os.path.join( self.answerPath, file )
