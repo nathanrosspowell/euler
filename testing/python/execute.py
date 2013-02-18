@@ -86,7 +86,7 @@ class ExecuteClang( ExecuteGcc ):
     version = "clang"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-class ExecuteGdc( ExecuteGcc ):
+class ExecuteGdc( Execute ):
     version = "gdc"
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def createCmd( self ):
@@ -105,3 +105,12 @@ class ExecuteHaskell( Execute ):
         bash = os.path.join( self.folders.bashPath, self.version )
         self.cmd = self.bashFormat % ( bash, args )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class ExecuteErlang( Execute ):
+    version = "erlang"
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    def createCmd( self ):
+        folder, fileName = os.path.split( self.problemPath )
+        args = "%s %s/e%.4d.erl e%.4d" % ( folder, folder, self.problemNumber, self.problemNumber )
+        bash = os.path.join( self.folders.bashPath, self.version )
+        self.cmd = self.bashFormat % ( bash, args )

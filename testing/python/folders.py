@@ -17,6 +17,7 @@ class Folders:
     langHaskell = "haskell"
     langScala = "scala"
     langD = "d"
+    langErlang = "erlang"
     # Keys.
     ext = "etx"
     exe = "exe"
@@ -45,6 +46,10 @@ class Folders:
         langD : {
             ext : ".d",
             exe : ( ExecuteGdc, ),
+        },
+        langErlang : {
+            ext : ".erl",
+            exe : ( ExecuteErlang, ),
         },
     }
     # Problem fomats.
