@@ -12,6 +12,7 @@ Currently solutions are presented in
 * Python
 * Haskell
 * D
+* Erlang
 
 ## Installing
 This repo is tested against these versions
@@ -22,6 +23,7 @@ This repo is tested against these versions
 * Clang 2.9
 * Glasgow Compiler 6.12.1
 * GDC
+* Erlang R14B04
 
 Call the bash script `install.bash` to get the needed software.
 
