@@ -1,6 +1,6 @@
 ##!/usr/bin/python
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# PyCast. Authored by Nathan Ross Powell.
+# folders. Authored by Nathan Ross Powell.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Imports.
 import os
