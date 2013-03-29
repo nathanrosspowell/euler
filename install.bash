@@ -10,3 +10,5 @@ sudo apt-get install haskell-platform
 sudo apt-get install gdc
 # Erlang
 sudo apt-get install erlang erlang-ic erlang-doc
+# Go
+sudo apt-get install golang

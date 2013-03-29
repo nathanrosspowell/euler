@@ -18,6 +18,7 @@ class Folders:
     langScala = "scala"
     langD = "d"
     langErlang = "erlang"
+    langGo = "go"
     # Keys.
     ext = "etx"
     exe = "exe"
@@ -50,6 +51,10 @@ class Folders:
         langErlang : {
             ext : ".erl",
             exe : ( ExecuteErlang, ),
+        },
+        langGo: {
+            ext : ".go",
+            exe : ( ExecuteGo, ),
         },
     }
     # Problem fomats.
