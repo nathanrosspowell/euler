@@ -14,6 +14,7 @@ Currently solutions are presented in
 * D
 * Erlang
 * Go
+* Javascript
 
 ## Installing
 This repo is tested against these versions
@@ -26,6 +27,7 @@ This repo is tested against these versions
 * GDC
 * Erlang R14B04
 * go1
+* rhino 1.7
 
 Call the bash script `install.bash` to get the needed software.
 
