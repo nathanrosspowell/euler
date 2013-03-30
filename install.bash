@@ -12,3 +12,5 @@ sudo apt-get install gdc
 sudo apt-get install erlang erlang-ic erlang-doc
 # Go
 sudo apt-get install golang
+# Javascript
+sudo apt-get install rhino

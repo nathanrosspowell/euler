@@ -19,6 +19,7 @@ class Folders:
     langD = "d"
     langErlang = "erlang"
     langGo = "go"
+    langJs = "javascript"
     # Keys.
     ext = "etx"
     exe = "exe"
@@ -55,6 +56,10 @@ class Folders:
         langGo: {
             ext : ".go",
             exe : ( ExecuteGo, ),
+        },
+        langJs: {
+            ext : ".js",
+            exe : ( ExecuteJavascript, ),
         },
     }
     # Problem fomats.
