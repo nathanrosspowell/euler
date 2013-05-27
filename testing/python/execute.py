@@ -94,14 +94,8 @@ class ExecuteJavascript( ExecuteGcc ):
     version = "javascript"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-class ExecuteGdc( Execute ):
+class ExecuteGdc( ExecuteGcc ):
     version = "gdc"
-    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def createCmd( self ):
-        folder, fileName = os.path.split( self.problemPath )
-        args = "%s %s/d%.4d.d" % ( folder, folder, self.problemNumber )
-        bash = os.path.join( self.folders.bashPath, self.version )
-        self.cmd = self.bashFormat % ( bash, args )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ExecuteHaskell( Execute ):
@@ -119,6 +113,6 @@ class ExecuteErlang( Execute ):
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def createCmd( self ):
         folder, fileName = os.path.split( self.problemPath )
-        args = "%s %s/e%.4d.erl e%.4d" % ( folder, folder, self.problemNumber, self.problemNumber )
+        args = "%s %s/pe%.4d.erl pe%.4d" % ( folder, folder, self.problemNumber, self.problemNumber )
         bash = os.path.join( self.folders.bashPath, self.version )
         self.cmd = self.bashFormat % ( bash, args )

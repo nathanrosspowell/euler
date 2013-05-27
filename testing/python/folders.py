@@ -64,7 +64,7 @@ class Folders:
     }
     # Problem fomats.
     folderFormat = "%.4d"
-    sourceFile = "%.4d%s"
+    sourceFile = "pe%.4d%s"
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def __init__( self, path ):
         self.path = path
