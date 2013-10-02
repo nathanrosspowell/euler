@@ -3,60 +3,87 @@
 // 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).
 // It is possible to make £2 in the following way:
 // 
-// £1 + 50p + 2*20p + 5p + 2p + 3*1p
+// 1£1 +50p + 220p + 15p + 12p + 31p
 // How many different ways can £2 be made using any number of coins?
 #include <iostream>
-#include <deque>
+#include <vector>
 #include <map>
 
 typedef unsigned int uint;
-typedef std::deque< int > List;
+typedef std::vector< uint > List;
+typedef std::map< uint, uint > Map;
+typedef std::pair< uint, uint > Pair;
 
-bool loop( uint& outTotal, List coins, int start, int target )  
+/*
+uint test( const List& coins, Map& store, int target = 200 )
 {
-    bool solved = false;
-    int coin = coins[ 0 ];
-    coins.pop_front();
-
-    bool lastCoin = coins.size() == 0;
-    //std::cout << "LOOP:" << coin << " Start:" << start << std::endl;
-    for ( int i = 0; i <= target; i += coin )
+    uint total = 0;
+    for ( List::const_iterator i = coins.begin(); i != coins.end(); ++i )
     {
-        int num = i == 0 ? start : start - i;
-        //std::cout << coin << ":"<< num << std::endl;
-        if ( num == 0 )
+        int result = target - *( i );
+        if ( result == 0 )
         {
-            ++outTotal;
-            solved = true;
-            //std::cout << "--- Solve LOOP:" << coin << " Count:" << outTotal << std::endl;
-            break;
+            total += 1;
         }
-        else if ( num < 0 )
+        else if ( result > 0 )
         {
-            break;
-        }
-        else if ( !lastCoin )
-        { 
-            loop( outTotal, coins, num, target );
+            Map::iterator mapIter = store.find( result );
+            if ( mapIter == store.end() )
+            {
+                uint testResult = test( coins, store, result );
+                mapIter = store.insert( Pair( result, testResult ) ).first;
+            }
+            total +=  mapIter->second;
         }
     }
-    return solved;
+    return total;
+} 
+*/
+
+uint test( const List& coins, Map& store, int start = 0, int target = 3 )  
+{
+    uint total = 0;
+    for ( uint num = start; num < target + 1; ++num )
+    {
+        for ( List::const_iterator coin = coins.begin(); coin != coins.end(); ++coin )
+        {
+            int result = num - *( coin );
+            if ( result == 0 )
+            {
+                if ( num == target)
+                    std::cout << " and  +" << *( coin ) << std::endl;
+                total += 1;
+            }
+            else if ( result > 0 )
+            {
+                if ( num == target)
+                    std::cout << " + " << *( coin ) ;
+                Map::iterator mapIter = store.find( result );
+                if ( mapIter != store.end() )
+                {
+                    uint testResult = test( coins, store, result );
+                    mapIter = store.insert( Pair( result, testResult ) ).first;
+                }
+                //total += 1;
+                total += mapIter->second; 
+            }
+        }
+    }
 }
 
 int main()
 {
+    Map store;
     List coins;
-    coins.push_back( 200 );
-    coins.push_back( 100 );
-    coins.push_back( 50 );
-    coins.push_back( 20 );
-    coins.push_back( 10 );
-    coins.push_back( 5 );
-    coins.push_back( 2 );
     coins.push_back( 1 );
-    int target = 200;
-    uint total = 0;
-    loop( total, coins, target, target );
+    coins.push_back( 2 );
+    coins.push_back( 5 );
+    coins.push_back( 10 );
+    coins.push_back( 20 );
+    coins.push_back( 50 );
+    coins.push_back( 100 );
+    coins.push_back( 200 );
+    uint total = test( coins, store );
     std::cout << total << std::endl;
     return 0;
 }

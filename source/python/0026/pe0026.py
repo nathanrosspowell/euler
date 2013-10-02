@@ -5,8 +5,8 @@ def pattern( digits ):
     for x in xrange( -1, neg, -1 ):
         y = x + x 
         z = y + x
-        #print "x", x, "y", y, "z"
-        #print digits[ x :  ], digits[ y : x ], digits[ z : y ]
+        ##print "x", x, "y", y, "z"
+        ##print digits[ x :  ], digits[ y : x ], digits[ z : y ]
         if digits[ x :  ] == digits[ y : x ] == digits[ z : y ]:
             return len( digits[ x : ] ), digits
     return 0, []
@@ -26,14 +26,11 @@ def fraction( den ):
         if pat[0] > 0 :
             return pat
     return 0,[] 
-
-print fraction( 983 )
-print 1/0
 length = 0
 number = 0
 for i in xrange( 2, 1001 ):
     iLength, digits = fraction( i )
-    print i, iLength
+    #print i, iLength
     if iLength > length:
         length = iLength
         number = i
