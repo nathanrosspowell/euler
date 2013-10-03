@@ -10,24 +10,28 @@
 #
 # HINT: Some products can be obtained in more than one way so be sure to only
 # include it once in your sum.
-RESULT = "123456789"
-def isPandigitalWithProduct( x, y ):
-    xstr = str( x )
-    yStr = str( y )
-    number = x * y
-    numStr = str( number )
-    numStr = ''.join( sorted( xstr + yStr + numStr ) )
-    if numStr == RESULT:
-        return number
-def pairs():
-    for x in xrange( 1, 10000 ):
-        for y in xrange( 1, 10000 ):
-            yield x, y
+import itertools
+def isPandigital( x, y, z ):
+    if x * y == z:
+        return z
+def getCombinations( range ):
+    for perm in itertools.permutations( range ):
+        yield perm
+def getSplits( nums ):
+    size = len( nums )
+    for i in xrange( 1, size - 1 ):
+        for j in xrange( i+1, size ):
+            yield nums[ :i ], nums[ i:j ], nums[ j: ]
+def tupleToNumber( nums ):
+    num = 0
+    for i, digit in enumerate( reversed( nums ) ):
+        num += digit * ( 10**i )
+    return num
 pandigital = []
-for pair in pairs():
-    product = isPandigitalWithProduct( *pair )
-    if product:
-        pandigital.append( product )
-print pandigital
-print set( pandigital )
+for com in getCombinations( xrange( 1, 10 ) ):
+    for split in getSplits( com ):
+        args =  map( tupleToNumber, split )
+        product = isPandigital( *args )
+        if product is not None:
+            pandigital.append( product )
 print sum( set( pandigital ) )
