@@ -12,14 +12,19 @@
 # terms, find the value of the denominator.
 def divide( x, y ):
     return ( x * 1.0 ) / ( y * 1.0 )
+def lowestCommonDenominator( numerator, denominator ):
+    return 1.0
 def getVariations( num ):
     for i in xrange( 1, num ):
         for j in xrange( 1, num ):
             yield ( i*10 + num, num*10 + j ), ( i, j )
-results = []
+numerator = 1
+denominator =1
 for i in range( 1, 10 ):
     for calc, test in getVariations( i ):
         #print "Test:",calc, test
         result = divide( *calc )
         if result == divide( *test ):
-            results.append( test )
+            numerator *= test[ 0 ]
+            denominator *= test[ 1 ]
+print denominator / lowestCommonDenominator( numerator, denominator )
