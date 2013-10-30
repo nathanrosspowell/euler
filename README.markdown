@@ -63,3 +63,9 @@ It's the actual completion of the problems that I'm aiming for!
     * Include stats on the best and worst solutions from each language
     * Include some kind of graphic
     * Make a website with the github pages feature
+* Better install code
+* Languages to add:
+    *  Rust - tricky to install right now, but nearly at v1.0
+    *  Clojure - missing some Lisp knowledge right now
+    *  Split C and C++ - makes C++ use C++11 features
+    *  Nimrod - seems interesting
