@@ -5,11 +5,10 @@
 --
 -- By considering the terms in the Fibonacci sequence whose values do not 
 -- exceed four million, find the sum of the even-valued terms.
-main = print $ sum list 
+main = print $ sum $ fibs 0
 fib 0 = 0
 fib 1 = 1 
 fib n = fib ( n - 1 ) + fib ( n - 2 )
-list = fib 3 : fibs 4
 fibs n 
     | x >= 4000000   = []
     | x `mod` 2 == 0 = x : fibs ( n + 1 )
