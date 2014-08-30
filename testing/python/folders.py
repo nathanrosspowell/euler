@@ -20,6 +20,7 @@ class Folders:
     langErlang = "erlang"
     langGo = "go"
     langJs = "javascript"
+    langRust = "rust"
     # Keys.
     ext = "etx"
     exe = "exe"
@@ -60,6 +61,10 @@ class Folders:
         langJs: {
             ext : ".js",
             exe : ( ExecuteJavascript, ),
+        },
+        langRust: {
+            ext : ".rs",
+            exe : ( ExecuteRust, ),
         },
     }
     # Problem fomats.
