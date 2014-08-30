@@ -14,3 +14,5 @@ sudo apt-get install erlang erlang-ic erlang-doc
 sudo apt-get install golang
 # Javascript
 sudo apt-get install rhino
+# Rust
+curl -s https://static.rust-lang.org/rustup.sh | sudo sh
