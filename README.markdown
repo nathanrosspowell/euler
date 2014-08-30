@@ -15,6 +15,7 @@ Currently solutions are presented in
 * Erlang
 * Go
 * Javascript
+* Rust
 
 ## Installing
 This repo is tested against these versions
@@ -28,6 +29,7 @@ This repo is tested against these versions
 * Erlang R14B04
 * go1
 * rhino 1.7
+* Rust nightly builds
 
 Call the bash script `install.bash` to get the needed software.
 
