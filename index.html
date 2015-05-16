@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Project Euler by nathanrosspowell</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Project Euler</h1>
+        <p>Project Euler problems solved in various langauges</p>
+
+        <p class="view"><a href="https://github.com/nathanrosspowell/euler">View the Project on GitHub <small>nathanrosspowell/euler</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/nathanrosspowell/euler/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nathanrosspowell/euler/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nathanrosspowell/euler">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="project-euler" class="anchor" href="#project-euler" aria-hidden="true"><span class="octicon octicon-link"></span></a>PROJECT EULER</h1>
+
+<p><img src="http://projecteuler.net/profile/nathanrosspowell.png"></p>
+
+<p>I have been attempting the Project Euler challenges as a learning exercise - 
+primarily to enhance my problem solving skills
+and secondly to aid in the learning of new programming languages.</p>
+
+<h2>
+<a id="languages" class="anchor" href="#languages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Languages</h2>
+
+<p>Currently solutions are presented in</p>
+
+<ul>
+<li>C++</li>
+<li>Python</li>
+<li>Haskell</li>
+<li>D</li>
+<li>Erlang</li>
+<li>Go</li>
+<li>Javascript</li>
+<li>Rust</li>
+</ul>
+
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<p>This repo is tested against these versions</p>
+
+<ul>
+<li>Ubuntu 12.04 &amp; 11.10</li>
+<li>Python 2.6.6</li>
+<li>GCC 4.4.5</li>
+<li>Clang 2.9</li>
+<li>Glasgow Compiler 6.12.1</li>
+<li>GDC</li>
+<li>Erlang R14B04</li>
+<li>go1</li>
+<li>rhino 1.7</li>
+<li>Rust nightly builds</li>
+</ul>
+
+<p>Call the bash script <code>install.bash</code> to get the needed software.</p>
+
+<h2>
+<a id="executing" class="anchor" href="#executing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing</h2>
+
+<p>Completed problems will be ran by the testing utility and double checked against the correct answer</p>
+
+<pre><code>python testing/run.py
+</code></pre>
+
+<p>To filter the testing add a language (or list of them) and a problem number (or list of them)</p>
+
+<pre><code>python testing/run.py cpp
+python testing/run.py python
+python testing/run.py cpp python
+python testing/run.py cpp 1
+python testing/run.py cpp 1 2 99 142
+python testing/run.py cpp haskell 1
+python testing/run.py cpp haskell 42 69
+</code></pre>
+
+<h2>
+<a id="solutions" class="anchor" href="#solutions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solutions</h2>
+
+<p>Nothing here is groundbreaking, super minimal or extremely optimal code.
+The solutions are of the most part coded upto getting the correct answer, then plopped into source control.
+It's the actual completion of the problems that I'm aiming for!</p>
+
+<h2>
+<a id="to-do" class="anchor" href="#to-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>To do</h2>
+
+<ul>
+<li>Make a seperate list of C solution, move C++ to using as much C++11 features as possible.</li>
+<li>Redo testing to allow for multiple solutions in the same language. (functional and imperative solutions, differnt approaches etc.)</li>
+<li>Have different run methods for languages that have the option to be interpreted and compiled.</li>
+<li>Make and store output data from the testing functionalilty
+
+<ul>
+<li>Include stats on the best and worst solutions from each language</li>
+<li>Include some kind of graphic</li>
+<li>Make a website with the github pages feature</li>
+</ul>
+</li>
+<li>Better install code</li>
+<li>Languages to add:
+
+<ul>
+<li> Split C and C++ - makes C++ use C++11 features</li>
+<li> Nimrod - seems interesting</li>
+</ul>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/nathanrosspowell">nathanrosspowell</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
